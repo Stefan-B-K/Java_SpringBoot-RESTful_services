@@ -2,6 +2,7 @@ package com.istef.rest_webservices.controller;
 
 import com.istef.rest_webservices.model.User;
 import com.istef.rest_webservices.exception.UserNotFoundException;
+import com.istef.rest_webservices.model.UserV2;
 import com.istef.rest_webservices.service.UserDaoService;
 import jakarta.validation.Valid;
 import org.springframework.context.MessageSource;
@@ -66,4 +67,9 @@ public class UserController {
     }
 
     // Versioning example
+    @GetMapping("/v2/{id}")
+    public UserV2 getOneV2(@PathVariable int id) {
+        return userDaoService.findV2(id)
+                .orElseThrow(() -> new UserNotFoundException("ID: " + id));
+    }
 }

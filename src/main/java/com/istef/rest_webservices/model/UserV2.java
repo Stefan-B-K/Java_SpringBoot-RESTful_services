@@ -2,23 +2,22 @@ package com.istef.rest_webservices.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
+
 
 import java.time.LocalDate;
 
-public class User {
+public class UserV2 {
     private int id;
 
     @NotNull
-    @Size(min = 2, message = "Name should be at least two letters long")
-    private String name;
+    private Name name;
 
     @NotNull
     @Past(message = "Birthdate cannot be in the future")
     private LocalDate birthDate;
 
 
-    public User(int id, String name, LocalDate birthDate) {
+    public UserV2(int id, Name name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -32,11 +31,11 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
@@ -50,9 +49,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserV2{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name=" + name +
                 ", birthDate=" + birthDate +
                 '}';
     }
