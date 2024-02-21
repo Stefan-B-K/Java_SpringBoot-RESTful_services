@@ -27,7 +27,7 @@ public class UserDaoService {
         return userList;
     }
 
-    public Optional<User> findOne(int id) {
+    public Optional<User> find(int id) {
         return userList.stream()
                 .filter(user -> user.getId() == id)
                 .findFirst();
@@ -39,5 +39,9 @@ public class UserDaoService {
         user.setId(++userCount);
         userList.add(user);
         return Optional.of(user.getId());
+    }
+
+    public boolean deleteBtId(int id) {
+        return userList.removeIf(user -> user.getId() == id);
     }
 }

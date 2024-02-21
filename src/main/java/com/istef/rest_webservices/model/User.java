@@ -1,10 +1,20 @@
 package com.istef.rest_webservices.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class User {
     private int id;
+
+    @NotNull
+    @Size(min = 2, message = "Name should be of at least two letters")
     private String name;
+
+    @NotNull
+    @Past(message = "Birthdate cannot be in the future")
     private LocalDate birthDate;
 
 
