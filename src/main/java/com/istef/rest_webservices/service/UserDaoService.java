@@ -56,6 +56,9 @@ public class UserDaoService {
         return userList.removeIf(user -> user.getId() == id);
     }
 
+    public List<UserV2> findAllV2() {
+        return userListV2;
+    }
 
     public Optional<UserV2> findV2(int id) {
         return userListV2.stream()

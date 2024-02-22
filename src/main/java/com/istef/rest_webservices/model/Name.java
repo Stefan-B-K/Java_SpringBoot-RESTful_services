@@ -1,14 +1,17 @@
 package com.istef.rest_webservices.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-
+//@JsonIgnoreProperties("middleName")
+@JsonFilter("NoMiddleName")
 public class Name {
     @NotNull
     @Size(min = 2, message = "Fisrt name should be at least 2 letters long")
     private String firstName;
 
+//    @JsonIgnore
     private String middleName;
 
     @NotNull
